@@ -10,6 +10,7 @@ class HomeController < ApplicationController
     #   @links << xml_entry.children[4].attributes["href"].value
     # end
 
-    @links = Feed.feed_links
+    @reddit_links = Feed.reddit_feed_links
+    @google_feed_links = Feed.google_alert_feed_links
   end
 end
