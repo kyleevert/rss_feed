@@ -11,6 +11,6 @@ class HomeController < ApplicationController
     # end
 
     @reddit_links = Feed.reddit_feed_links
-    @google_feed_links = Feed.google_alert_feed_links
+    # @google_feed_links = Feed.google_alert_feed_links
   end
 end
