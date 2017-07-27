@@ -1,3 +1,24 @@
-<%= 
-  @xml_doc.to_html
-%>
+<div id="link-container">
+  <% @links.each do |link| %>
+    <a href="<%= link %>" class="link"><%= link %></a>
+  <% end %>
+</div>
+
+<style>
+  #link-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .link {
+    display: block;
+    font-size: 20px;
+    line-height: 25px;  
+  }
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  });
+</script>
+
