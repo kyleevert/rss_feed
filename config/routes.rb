@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   #   end
 
   root 'home#index'
+  post 'combine-feed' => 'home#combine_feed'
   get 'feed' => 'feed#index'
   get 'feed-test' => 'feed#feed_test'
 end

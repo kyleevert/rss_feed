@@ -20,25 +20,17 @@ class Feed
     'https://www.google.co.uk/alerts/feeds/08496812215877632442/3089297706991962376'
   ]
 
-  def self.reddit_feed_links
-    feed_links = []
-    FEED_URLS.each do |feed_url|
+  def self.reddit_feed_entries(feed_urls)
+    entries = []
+    feed_urls.each do |feed_url|
       xml_doc = Nokogiri::XML(open(feed_url, 'User-Agent' => 'Nooby'))
       xml_entries = xml_doc.xpath("//xmlns:entry")
-
-      xml_entries.each do |xml_entry|
-        # feed_links << xml_entry.children[2].text
-
-        feed_text = xml_entry.children[2].text
-        pos_link = feed_text.index('[link]')
-        pos_href = feed_text.rindex('href=', pos_link)
-        feed_links << feed_text[pos_href + 6..pos_link - 3]
-      end
+      entries.concat xml_entries
     end
-    feed_links
+    entries
   end
 
-  def self.reddit_test_feed_links
+  def self.reddit_test_feed_entries
     feed_links = []
     entries = []
     ['https://www.reddit.com/r/Bitcoin/top.rss?sort=top&t=day.rss'].each do |feed_url|
