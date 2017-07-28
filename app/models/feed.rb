@@ -50,7 +50,9 @@ class Feed
         feed_text = xml_entry.children[2].text
         pos_link = feed_text.index('[link]')
         pos_href = feed_text.rindex('<a href=', pos_link)
-        feed_links << feed_text[pos_href..pos_link + 5]
+        # feed_links << feed_text[pos_href..pos_link + 5]
+
+        feed_links << feed_text
       end
     end
     feed_links
