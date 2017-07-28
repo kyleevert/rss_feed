@@ -10,10 +10,9 @@ xml.feed xmlns: "http://www.w3.org/2005/Atom" do
 
   @reddit_entries.each do |entry|
     xml.entry do
-      # xml.content "<table>#{link}</table>", type: "html"
       xml.category term: "Bitcoin", label: "r/Bitcoin"
       xml.content entry.children[2].text, type: "html"
-      xml.id entry.children[3].text
+      # xml.id entry.children[3].text
     end
   end
 end
