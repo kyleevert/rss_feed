@@ -40,6 +40,7 @@ class Feed
 
   def self.reddit_test_feed_links
     feed_links = []
+    entries = []
     ['https://www.reddit.com/r/Bitcoin/top.rss?sort=top&t=day.rss'].each do |feed_url|
       xml_doc = Nokogiri::XML(open(feed_url, 'User-Agent' => 'Nooby'))
       xml_entries = xml_doc.xpath("//xmlns:entry")
@@ -54,8 +55,9 @@ class Feed
 
         feed_links << feed_text
       end
+      entries.concat xml_entries
     end
-    feed_links
+    entries
   end
 
   def self.google_alert_feed_links
