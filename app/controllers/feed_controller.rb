@@ -7,7 +7,7 @@ class FeedController < ApplicationController
   end
 
   def feed_test
-    @reddit_links = Feed.reddit_feed_links
+    @reddit_links = Feed.reddit_test_feed_links
     respond_to do |format|
       format.rss { render :layout => false }
     end

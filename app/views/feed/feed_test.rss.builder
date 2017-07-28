@@ -6,12 +6,7 @@ xml.feed xmlns: "http://www.w3.org/2005/Atom" do
 
   @reddit_links.each do |link|
     xml.entry do
-      # xml.title article.title
-      # xml.description article.body
-      # xml.pubDate article.published_at.to_s(:rfc822)
-      # xml.link article_url(article)
-      # xml.guid article_url(article)
-      xml.link link
+      xml.content link, type: "html"
     end
   end
 end

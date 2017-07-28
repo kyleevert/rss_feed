@@ -49,8 +49,8 @@ class Feed
 
         feed_text = xml_entry.children[2].text
         pos_link = feed_text.index('[link]')
-        pos_href = feed_text.rindex('href=', pos_link)
-        feed_links << feed_text[pos_href + 6..pos_link - 3]
+        pos_href = feed_text.rindex('<a href=', pos_link)
+        feed_links << feed_text[pos_href..pos_link + 5]
       end
     end
     feed_links
@@ -77,7 +77,7 @@ class Feed
     xml_entries = xml_doc.xpath("//xmlns:entry")
     feed_text = xml_entries.first.children[2].text
     pos_link = feed_text.index('[link]')
-    pos_href = feed_text.rindex('href=', pos_link)
-    puts feed_text[pos_href + 6..pos_link - 3]
+    pos_href = feed_text.rindex('<a href=', pos_link)
+    puts feed_text[pos_href..pos_link + 5]
   end
 end
