@@ -80,8 +80,15 @@ class Feed
     xml_doc = Nokogiri::XML(open(feed_url, 'User-Agent' => 'Nooby'))
     xml_entries = xml_doc.xpath("//xmlns:entry")
     feed_text = xml_entries.first.children[2].text
-    pos_link = feed_text.index('[link]')
+    pos_link = feed_text.index('[link]</a>')
     pos_href = feed_text.rindex('<a href=', pos_link)
-    puts feed_text[pos_href..pos_link + 5]
+    puts feed_text[pos_href..pos_link + 9]
+  end
+
+  def self.get_only_link(xml_entry)
+    feed_text = xml_entry.children[2].text
+    pos_link = feed_text.index('[link]</a>')
+    pos_href = feed_text.rindex('<a href=', pos_link)
+    feed_text[pos_href..pos_link + 9]
   end
 end
