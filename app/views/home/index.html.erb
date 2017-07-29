@@ -5,7 +5,10 @@
     <fieldset>
       <legend>Reddit Input RSS Feed</legend>
       <div id="input-rss-container">
-        <input type="text" name="input_rss[]" class="input-rss form-control">
+        <div class="input-rss-item">
+          <input type="text" name="input_rss[]" class="input-rss form-control">
+          <button class="remove button" type="button">-</button>
+        </div>
       </div>
       <div style="margin-top: 20px;">
         <button class="add-more button" type="button">+</button>
@@ -67,7 +70,13 @@
   .input-rss {
     display: block;
     min-width: 360px;
-    /*width: 50%;*/
+    width: calc(100% - 50px);
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .input-rss-item + .input-rss-item {
+    margin-top: 20px;
   }
 
   .input-rss + .input-rss {
@@ -96,6 +105,10 @@
     border-radius: 4px;
   }
 
+  .remove {
+    background-color: brown;
+  }
+
   #output-rss {
     width: 100%;
     font-size: 20px;
@@ -106,7 +119,13 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('.add-more').on('click', function() {
-      $('#input-rss-container').append('<input type="text" name="input_rss[]" class="input-rss form-control">');
+      $('#input-rss-container').append($('#input-rss-container .input-rss-item')[0].outerHTML);
+    })
+
+    $('#input-rss-container').on('click', '.remove', function() {
+      if ($('#input-rss-container .input-rss-item').length > 1) {
+        $(this).parent().remove();
+      }
     })
   });
 </script>
