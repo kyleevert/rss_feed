@@ -4,9 +4,21 @@
   <%= form_tag("/combine-feed", method: "post", remote: true) do %>
     <fieldset>
       <legend>Reddit Input RSS Feed</legend>
-      <div id="input-rss-container">
+      <div class="input-rss-container">
         <div class="input-rss-item">
-          <input type="text" name="input_rss[]" class="input-rss form-control">
+          <input type="text" name="reddit_input_rss[]" class="input-rss form-control">
+          <button class="remove button" type="button">-</button>
+        </div>
+      </div>
+      <div style="margin-top: 20px;">
+        <button class="add-more button" type="button">+</button>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Google Alert Input RSS Feed</legend>
+      <div class="input-rss-container">
+        <div class="input-rss-item">
+          <input type="text" name="google_input_rss[]" class="input-rss form-control">
           <button class="remove button" type="button">-</button>
         </div>
       </div>
@@ -119,11 +131,13 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('.add-more').on('click', function() {
-      $('#input-rss-container').append($('#input-rss-container .input-rss-item')[0].outerHTML);
+      $inputRssContainer = $(this).closest('fieldset').find('.input-rss-container');
+      $inputRssContainer.append($inputRssContainer.find('.input-rss-item')[0].outerHTML);
     })
 
-    $('#input-rss-container').on('click', '.remove', function() {
-      if ($('#input-rss-container .input-rss-item').length > 1) {
+    $('.input-rss-container').on('click', '.remove', function() {
+      $inputRssContainer = $(this).closest('fieldset').find('.input-rss-container');
+      if ($inputRssContainer.find('.input-rss-item').length > 1) {
         $(this).parent().remove();
       }
     })

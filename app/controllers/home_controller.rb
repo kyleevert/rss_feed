@@ -7,9 +7,11 @@ class HomeController < ApplicationController
   end
 
   def combine_feed
-    input_rss_feeds = params[:input_rss]
-    input_rss_feeds.delete_if {|x| x.blank? }
-    @feed_url = feed_url(format: :rss, input_rss: input_rss_feeds)
+    reddit_input_rss_feeds = params[:reddit_input_rss]
+    reddit_input_rss_feeds.delete_if {|x| x.blank? }
+    google_input_rss_feeds = params[:google_input_rss]
+    google_input_rss_feeds.delete_if {|x| x.blank? }
+    @feed_url = feed_url(format: :rss, reddit_input_rss: reddit_input_rss_feeds, google_input_rss: google_input_rss_feeds)
     respond_to do |format|
       format.js {
         render :combine_feed
