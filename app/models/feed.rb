@@ -30,6 +30,16 @@ class Feed
     entries
   end
 
+  def self.google_feed_entries(feed_urls)
+    entries = []
+    feed_urls.each do |feed_url|
+      xml_doc = Nokogiri::XML(open(feed_url, 'User-Agent' => 'Nooby'))
+      xml_entries = xml_doc.xpath("//xmlns:entry")
+      entries.concat xml_entries
+    end
+    entries
+  end
+
   def self.reddit_test_feed_entries
     feed_links = []
     entries = []
@@ -77,10 +87,21 @@ class Feed
     puts feed_text[pos_href..pos_link + 9]
   end
 
-  def self.get_only_link(xml_entry)
+  def self.get_reddit_link(xml_entry)
     feed_text = xml_entry.children[2].text
     pos_link = feed_text.index('[link]</a>')
     pos_href = feed_text.rindex('<a href=', pos_link)
     feed_text[pos_href..pos_link + 9]
+  end
+
+  def self.get_google_link(xml_entry)
+    # feed_text = xml_entry.children[2].text
+    # pos_link = feed_text.index('[link]</a>')
+    # pos_href = feed_text.rindex('<a href=', pos_link)
+    # feed_text[pos_href..pos_link + 9]
+
+    uri = URI(xml_entry.children[5].attributes["href"].value)
+    url_link = uri.query.split('&').select {|m| m.starts_with?('url')}[0]
+    '<a href="' + url_link.gsub('url=', '') + '">[link]</a>'
   end
 end
