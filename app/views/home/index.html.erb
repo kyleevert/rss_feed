@@ -1,13 +1,16 @@
 <div id="link-container">
-  <h1>Reddit Feed Combine:</h1>
+  <h1>Feed Generator:</h1>
   <h2>Input RSS Feed</h2>
   <%= form_tag("/combine-feed", method: "post", remote: true) do %>
-    <div id="input-rss-container">
-      <input type="text" name="input_rss[]" class="input-rss form-control">
-    </div>
-    <div style="margin-top: 20px;">
-      <button class="add-more button">+</button>
-    </div>
+    <fieldset>
+      <legend>Reddit Input RSS Feed</legend>
+      <div id="input-rss-container">
+        <input type="text" name="input_rss[]" class="input-rss form-control">
+      </div>
+      <div style="margin-top: 20px;">
+        <button class="add-more button" type="button">+</button>
+      </div>
+    </fieldset>
     <div style="margin-top: 20px;">
       <%= submit_tag("Output", class: 'submit button') %>
     </div>
@@ -25,6 +28,12 @@
     /*font-size: 20px;*/
   } 
 
+  fieldset {
+    border: 1px solid #dddddd;
+    padding: 2rem;
+    margin: 1.8rem 0;
+  }
+
   #link-container {
     max-width: 1000px;
     margin: 0 auto;
@@ -40,7 +49,7 @@
     display: block;
     width: 100%;
     /*height: 34px;*/
-    padding: 6px 12px;
+    padding: 10px 12px;
     font-size: 20px;
     /*line-height: 1.42857143;*/
     color: #555;
