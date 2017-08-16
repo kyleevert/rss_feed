@@ -1,8 +1,8 @@
 xml.instruct! :xml, :version => "1.0"
-xml.feed xmlns: "http://www.w3.org/2005/Atom", "xmlns:idx" => 'urn:atom-extension:indexing' do
-  xml.id "tag:google.com,2005:reader/user/08496812215877632442/state/com.google/alerts/15634174531034742166"
-  xml.title "Google Alert - Litecoin"
-  xml.description "This is a combined rss feed."
+xml.feed xmlns: "http://www.w3.org/2005/Atom" do
+  xml.id "/feed.rss"
+  xml.title "Cardano RSS Feed"
+  xml.description "This is a Cardano rss feed."
 
   @reddit_entries.each do |entry|
     xml.entry do

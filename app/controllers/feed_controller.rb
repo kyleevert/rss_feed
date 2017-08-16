@@ -18,6 +18,7 @@ class FeedController < ApplicationController
     @reddit_entries = Feed.reddit_test_feed_entries
     respond_to do |format|
       format.rss { render :layout => false }
+      format.atom { render :layout => false }
     end
   end
 end
