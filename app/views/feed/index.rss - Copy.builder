@@ -1,8 +1,8 @@
 xml.instruct! :xml, :version => "1.0"
-xml.feed xmlns: "http://www.w3.org/2005/Atom", "xmlns:idx" => 'urn:atom-extension:indexing' do
-  xml.id "/feed-test.rss"
-  xml.title "RSS Feed Combined"
-  xml.description "This is a combined rss feed."
+xml.feed xmlns: "http://www.w3.org/2005/Atom" do
+  xml.id "/feed.rss"
+  xml.title "Cardano RSS Feed"
+  xml.description "This is a Cardano rss feed."
 
   @reddit_entries.each do |entry|
     xml.entry do
@@ -14,9 +14,11 @@ xml.feed xmlns: "http://www.w3.org/2005/Atom", "xmlns:idx" => 'urn:atom-extensio
 
   @google_entries.each do |entry|
     xml.entry do
-      xml.content Feed.get_google_link(entry), type: "html"
       xml.id entry.children[1].text
-      xml.title entry.children[3].text, type: "html"
+      xml.title CGI.unescapeHTML(entry.children[3].text), type: "html"
+      xml.link Feed.get_google_link(entry), href: Feed.get_google_link(entry)
+      # xml.content CGI.unescapeHTML(entry.children[11].text), type: "html"
+      xml.content CGI.unescapeHTML(entry.children[11].text), type: "html"
     end
   end
 end
