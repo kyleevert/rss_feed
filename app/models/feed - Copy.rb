@@ -102,7 +102,7 @@ class Feed
 
     uri = URI(xml_entry.children[5].attributes["href"].value)
     url_link = uri.query.split('&').select {|m| m.starts_with?('url')}[0]
-    url_link.gsub('url=', '')
+    '<link href="' + url_link.gsub('url=', '') + '"/'
   end
 
   def self.get_google_content(xml_entry)
