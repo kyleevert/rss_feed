@@ -84,14 +84,14 @@ class Feed
     feed_text = xml_entries.first.children[2].text
     pos_link = feed_text.index('[link]</a>')
     pos_href = feed_text.rindex('<a href=', pos_link)
-    puts feed_text[pos_href..pos_link + 9]
   end
 
   def self.get_reddit_link(xml_entry)
     feed_text = xml_entry.children[2].text
-    pos_link = feed_text.index('[link]</a>')
+    pos_link = feed_text.index('>[link]</a>')
     pos_href = feed_text.rindex('<a href=', pos_link)
-    feed_text[pos_href..pos_link + 9]
+    puts feed_text[pos_href + 9..pos_link - 2]
+    feed_text[pos_href + 9..pos_link - 2]
   end
 
   def self.get_google_link(xml_entry)
@@ -106,7 +106,7 @@ class Feed
   end
 
   def self.get_google_content(xml_entry)
-    uri = URI(xml_entry.children[5].attributes["href"].value)
+    uri = URI(xml_entry.children[11].attributes["href"].value)
     url_link = uri.query.split('&').select {|m| m.starts_with?('url')}[0]
     '<a href="' + url_link.gsub('url=', '') + '">[link]</a>'
   end
