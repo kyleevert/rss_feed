@@ -8,6 +8,7 @@ class FeedController < ApplicationController
     # feed_urls = params[:google_input_rss] || []
     feed_url_ids_str = params[:google_input_rss] || ''
     feed_urls = InputFeed.where(id: feed_url_ids_str.split(','), feed_type: 'google').pluck(:url)
+    feed_urls = [InputFeed.where(feed_type: 'google').first.url]
     @google_entries = Feed.google_feed_entries feed_urls
     respond_to do |format|
       format.rss { render :layout => false }
