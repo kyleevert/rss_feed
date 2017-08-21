@@ -1,0 +1,25 @@
+<h1>Show Input Feed</h1>
+
+<div>
+  <p>
+    <div class="label">
+      Name: <%= @input_feed.name %>
+    </div>
+  </p>
+
+  <p>
+    <div class="label">
+      Type: <%= @input_feed.feed_type %>
+    </div>
+  </p>
+
+  <p>
+    <div class="label">
+      Url: <%= @input_feed.url %>
+    </div>
+  </p>
+</div>
+
+<%= link_to 'Lists', :action => nil %>
+<%= link_to 'Edit', :action => 'edit', id: @input_feed.id %>
+<%= link_to 'Destroy', {:action => 'destroy', :id => @input_feed.id}, :confirm => 'Are you sure to remove this feed?', :method => :post %>

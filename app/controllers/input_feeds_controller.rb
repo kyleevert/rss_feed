@@ -1,6 +1,6 @@
 class InputFeedsController < ApplicationController
 
-  before_action :set_input_feed, only: [:edit, :update, :destroy]
+  before_action :set_input_feed, only: [:edit, :show, :update, :destroy]
   def index
     @google_feeds = InputFeed.google
     @reddit_feeds = InputFeed.reddit
@@ -11,6 +11,15 @@ class InputFeedsController < ApplicationController
   end
 
   def create
+    @input_feed = InputFeed.new(input_feed_params)
+    if @input_feed.save
+      redirect_to input_feed, notice: 'Successfully created the input feed url.'
+    else
+      redirect_to input_feed, alert: @input_feed.errors.full_messages.join(',')
+    end
+  end
+
+  def show
   end
 
   def edit

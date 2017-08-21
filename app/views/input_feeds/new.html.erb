@@ -1,0 +1,39 @@
+<h1>New Input Feed</h1>
+
+<%= form_for(@input_feed) do |f| %>
+  <p>
+    <div class="label">
+      Name:
+    </div>
+    <%= f.text_field 'name', class: 'form-control input-rss', required: true %>
+  </p>
+  <p>
+    <div class="label">
+      Type:
+    </div>
+    <%= f.select 'feed_type', [['google', 'google'], ['reddit', 'reddit']], { include_blank: false }, class: 'form-control input-rss', required: true %>
+  </p>
+  <p>
+    <div class="label">
+      Url:
+    </div>
+    <%= f.text_field 'url', class: 'form-control input-rss', required: true %>
+  </p>
+  <p>
+    <%= f.submit "Create", class: 'submit button' %>
+  </p>
+<% end %>
+
+<%= link_to 'Lists', :action => nil %>
+
+<style type="text/css">
+  .label {
+    width: 70px;
+    display: inline-block;
+  }
+
+  .input-rss {
+    width: calc(100% - 90px);
+    margin-right: 0;
+  }
+</style>
