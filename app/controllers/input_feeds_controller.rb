@@ -13,9 +13,9 @@ class InputFeedsController < ApplicationController
   def create
     @input_feed = InputFeed.new(input_feed_params)
     if @input_feed.save
-      redirect_to input_feed, notice: 'Successfully created the input feed url.'
+      redirect_to @input_feed, notice: 'Successfully created the input feed url.'
     else
-      redirect_to input_feed, alert: @input_feed.errors.full_messages.join(',')
+      redirect_to @input_feed, alert: @input_feed.errors.full_messages.join(',')
     end
   end
 
@@ -26,8 +26,10 @@ class InputFeedsController < ApplicationController
   end
 
   def update
-    if @robot.update_attributes(input_feed_params)
-      redirect_to :action => 'show', :id => @robot.id
+    if @input_feed.update_attributes(input_feed_params)
+      redirect_to @input_feed, notice: 'Successfully updated the input feed url.'
+    else
+      redirect_to @input_feed, alert: @input_feed.errors.full_messages.join(',')
     end
   end
 
