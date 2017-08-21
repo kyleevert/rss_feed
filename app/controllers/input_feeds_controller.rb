@@ -29,7 +29,7 @@ class InputFeedsController < ApplicationController
     if @input_feed.update_attributes(input_feed_params)
       redirect_to @input_feed, notice: 'Successfully updated the input feed url.'
     else
-      redirect_to @input_feed, alert: @input_feed.errors.full_messages.join(',')
+      redirect_to edit_input_feed_path(@input_feed), alert: @input_feed.errors.full_messages.join(',')
     end
   end
 
