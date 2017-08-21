@@ -1,0 +1,39 @@
+<h1>Google Input Feeds</h1>
+<table>
+  <tr>
+    <th width="30%">Name</th>
+    <th width="50%">Url</th>
+    <th width="20%">Action</th>
+  </tr>
+<% @google_feeds.each do |feed| %>
+  <tr>
+    <td><%= feed.name %></td>
+    <td><%= feed.url %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => feed.id %>&nbsp;&nbsp;&nbsp;<%= link_to 'Destroy', {:action => 'destroy', :id => feed.id}, :confirm => 'Are you sure to remove this feed?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<h1>Reddit Input Feeds</h1>
+<table>
+  <tr>
+    <th width="30%">Name</th>
+    <th width="50%">Url</th>
+    <th width="20%">Action</th>
+  </tr>
+<% @reddit_feeds.each do |feed| %>
+  <tr>
+    <td><%= feed.name %></td>
+    <td><%= feed.url %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => feed.id %>&nbsp;&nbsp;&nbsp;<%= link_to 'Destroy', {:action => 'destroy', :id => feed.id}, :confirm => 'Are you sure to remove this feed?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<br />
+<%= link_to 'New feed', :action => 'new' %>
+<br />
+<br />

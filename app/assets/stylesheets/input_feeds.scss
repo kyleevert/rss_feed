@@ -1,0 +1,24 @@
+// Place all the styles related to the InputFeeds controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table, th, td {
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  word-break: break-all;
+
+  tr {
+    td {
+      padding: 10px;
+    }
+  }
+}
+
+th {
+  height: 50px;
+}
+

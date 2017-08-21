@@ -1,0 +1,2 @@
+module InputFeedsHelper
+end
