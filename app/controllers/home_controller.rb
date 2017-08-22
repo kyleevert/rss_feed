@@ -18,7 +18,4 @@ class HomeController < ApplicationController
       }
     end
   end
-
-  def manage
-  end
 end
