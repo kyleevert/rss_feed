@@ -7,7 +7,7 @@
       <div class="input-rss-container">
         <div class="input-rss-item">
           <!-- <input type="text" name="reddit_input_rss[]" class="input-rss form-control"> -->
-          <%= select_tag "reddit_input_rss[]", options_for_select(InputFeed.where(feed_type: 'reddit').collect{ |u| [u.url, u.id] }), include_blank: true, class: "input-rss form-control" %>
+          <%= select_tag "reddit_input_rss[]", options_for_select(InputFeed.where(feed_type: 'reddit').collect{ |u| [u.name, u.id] }), include_blank: true, class: "input-rss form-control" %>
           <button class="remove button" type="button">-</button>
         </div>
       </div>
@@ -20,7 +20,7 @@
       <div class="input-rss-container">
         <div class="input-rss-item">
           <!-- <input type="text" name="google_input_rss[]" class="input-rss form-control"> -->
-          <%= select_tag "google_input_rss[]", options_for_select(InputFeed.where(feed_type: 'google').collect{ |u| [u.url, u.id] }), include_blank: true, class: "input-rss form-control" %>
+          <%= select_tag "google_input_rss[]", options_for_select(InputFeed.where(feed_type: 'google').collect{ |u| [u.name, u.id] }), include_blank: true, class: "input-rss form-control" %>
           <button class="remove button" type="button">-</button>
         </div>
       </div>

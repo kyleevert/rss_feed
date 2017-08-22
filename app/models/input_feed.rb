@@ -8,4 +8,5 @@ class InputFeed < ActiveRecord::Base
 
   scope :reddit, -> { where(feed_type: 'reddit') }
   scope :google, -> { where(feed_type: 'google') }
+  scope :default, -> { order(id: :asc) }
 end

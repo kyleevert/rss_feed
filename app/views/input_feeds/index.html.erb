@@ -9,7 +9,10 @@
   <tr>
     <td><%= feed.name %></td>
     <td><%= feed.url %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => feed.id %>&nbsp;&nbsp;&nbsp;<%= link_to 'Destroy', {:action => 'destroy', :id => feed.id}, :confirm => 'Are you sure to remove this feed?', :method => :post %></td>
+    <td>
+      <%= link_to 'Edit', :action => 'edit', :id => feed.id %>&nbsp;&nbsp;&nbsp;
+      <%= link_to 'Destroy',  { action: :destroy, id: feed.id }, method: :delete, data: { confirm: 'Are you sure to remove this feed?' } %>
+    </td>
   </tr>
 <% end %>
 </table>
@@ -27,7 +30,10 @@
   <tr>
     <td><%= feed.name %></td>
     <td><%= feed.url %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => feed.id %>&nbsp;&nbsp;&nbsp;<%= link_to 'Destroy', {:action => 'destroy', :id => feed.id}, :confirm => 'Are you sure to remove this feed?', :method => :post %></td>
+    <td>
+      <%= link_to 'Edit', :action => 'edit', :id => feed.id %>&nbsp;&nbsp;&nbsp;
+      <%= link_to 'Destroy',  { action: :destroy, id: feed.id }, method: :delete, data: { confirm: 'Are you sure to remove this feed?' } %>
+    </td>
   </tr>
 <% end %>
 </table>

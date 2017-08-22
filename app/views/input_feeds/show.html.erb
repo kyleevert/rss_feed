@@ -22,4 +22,4 @@
 
 <%= link_to 'Lists', :action => nil %>
 <%= link_to 'Edit', :action => 'edit', id: @input_feed.id %>
-<%= link_to 'Destroy', {:action => 'destroy', :id => @input_feed.id}, :confirm => 'Are you sure to remove this feed?', :method => :post %>
+<%= link_to 'Destroy',  { action: :destroy, id: @input_feed.id }, method: :delete, data: { confirm: 'Are you sure to remove this feed?' } %>

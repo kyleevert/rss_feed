@@ -2,8 +2,8 @@ class InputFeedsController < ApplicationController
 
   before_action :set_input_feed, only: [:edit, :show, :update, :destroy]
   def index
-    @google_feeds = InputFeed.google
-    @reddit_feeds = InputFeed.reddit
+    @google_feeds = InputFeed.google.default
+    @reddit_feeds = InputFeed.reddit.default
   end
 
   def new
@@ -34,6 +34,9 @@ class InputFeedsController < ApplicationController
   end
 
   def destroy
+    if @input_feed.destroy
+      redirect_to input_feeds_path, notice: 'Successfully deleted the input feed url.'
+    end
   end
 
   private
