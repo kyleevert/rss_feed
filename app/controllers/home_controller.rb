@@ -1,9 +1,9 @@
 require 'open-uri'
 
 class HomeController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
-    # @reddit_links = Feed.reddit_feed_links
-    # @google_feed_links = Feed.google_alert_feed_links
   end
 
   def combine_feed
