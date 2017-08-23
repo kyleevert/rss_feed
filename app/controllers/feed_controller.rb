@@ -1,4 +1,7 @@
 class FeedController < ApplicationController
+
+  skip_before_action :authenticate_user!
+  
   def index
     # feed_urls = params[:reddit_input_rss] || []
     feed_url_ids_str = params[:reddit_input_rss] || ''
