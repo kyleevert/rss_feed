@@ -59,8 +59,8 @@ Rails.application.routes.draw do
   post 'combine-feed' => 'home#combine_feed'
   get 'feed' => 'feed#index'
   get 'feed-test' => 'feed#feed_test'
-  get 'manage' => 'home#manage'
-
+  
   resources :input_feeds do
   end
+
 end
