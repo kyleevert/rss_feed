@@ -110,4 +110,5 @@ class Feed
     url_link = uri.query.split('&').select {|m| m.starts_with?('url')}[0]
     '<a href="' + url_link.gsub('url=', '') + '">[link]</a>'
   end
+
 end

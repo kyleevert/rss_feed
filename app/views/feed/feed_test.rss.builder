@@ -1,18 +1,16 @@
-xml.instruct! :xml, :version => "1.0"
-xml.feed xmlns: "http://www.w3.org/2005/Atom" do
-  # xml.category term: "Bitcoin", label: "r/Bitcoin"
-  xml.id "/feed-test.rss"
-  # xml.link rel: "self", href: "https://cardano-rss-feed.herokuapp.com/feed-test.rss", type: "application/atom+xml"
-  # xml.link rel: "alternate", href: "https://cardano-rss-feed.herokuapp.com/feed-test.rss", type: "text/html"
-  xml.title "RSS Feed Combined"
-  xml.description "This is a combined rss feed."
+xml.instruct! :xml, :version => "1.0" 
+xml.rss :version => "2.0" do
+  xml.channel do
+    xml.id "cardano-feed.rss"
+    xml.title "Cardano RSS Feed"
+    xml.description "Cardano RSS Feed urls"
 
-  @reddit_entries.each do |entry|
-    xml.entry do
-      xml.content Feed.get_only_link(entry), type: "html"
-      # xml.content '<a href="https://www.reddit.com/r/Bitcoin/comments/6pwd4k/share_some_of_the_most_importance_advice_youve/">[link]</a>', type: "html"
-      xml.id entry.children[3].text
-      xml.title entry.children[6].text
+    xml.item do
+      xml.title Sanitize.clean(CGI.unescapeHTML("&lt;b&gt;Bitcoin&lt;/b&gt; - The New Hedging Tool")), type: "html"
+      xml.description Sanitize.clean CGI.unescapeHTML("Recent events shows that investors are increasingly using &lt;b&gt;Bitcoin&lt;/b&gt; as a hedging tool against geo-politics and market uncertainties. In the next 10 years,&amp;nbsp;..."), type: "html"
+      xml.pubDate DateTime.current.to_s
+      xml.link "https://seekingalpha.com/article/4103589-bitcoin-new-hedging-tool", href: "https://seekingalpha.com/article/4103589-bitcoin-new-hedging-tool"
+      xml.guid 'abdfsdf'
     end
   end
 end

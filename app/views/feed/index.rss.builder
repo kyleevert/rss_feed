@@ -17,8 +17,8 @@ xml.rss :version => "2.0" do
     
     for entry in @google_entries
       xml.item do
-        xml.title CGI.unescapeHTML(entry.children[3].text), type: "html"
-        xml.description CGI.unescapeHTML(entry.children[11].text), type: "html"
+        xml.title Sanitize.clean CGI.unescapeHTML(entry.children[3].text), type: "html"
+        xml.description Sanitize.clean CGI.unescapeHTML(entry.children[11].text), type: "html"
         xml.pubDate entry.children[7].text
         xml.link Feed.get_google_link(entry), href: Feed.get_google_link(entry)
         xml.guid entry.children[1].text
